@@ -3531,7 +3531,7 @@ async function scene1(player) {
                         possibleActions = [
                             'jump down from the balcony',
                             'jump her from behind', 
-                            'greet them and sit opposite her',
+                            'walk up to her and flirt',
                             'pass her a love letter',
                         ];
                         switch (await choice(`How do you make your entrance, ${player.name}?`, possibleActions, false, false, false)) {
@@ -3562,7 +3562,7 @@ async function scene1(player) {
                                 possibleActions = [
                                     `Hi I\'m ${player.name}`,
                                     `Greeting mortal, I is embodyment of the pinacle of intelect named as ${player.name}.`, 
-                                    'Hey..... can I grab you by the p*ssy? ;)', 
+                                    'Amogus!', 
                                     'I like you, will you go out with me?',
                                 ];
                                 switch (await choice(`What do you say ${player.name}`, possibleActions, false, false, false)) {
@@ -3577,17 +3577,20 @@ async function scene1(player) {
                                         await LBozo(player);
                                         break;
                                     case 2:
-                                        await cutscene(`${player.name}: Hey..... can I grab you by the p*ssy? ;)`);
-                                        await cutscene(`Unfortunately for you, [a certain teacher who likes frogs] appears beind you at that moment.`);
-                                        await cutscene(`<p id="strong">YOU DIED: Death by [a certain teacher who likes frogs]</p>`);
+                                        await cutscene(`${player.name}: Amogus!!!!)`);
+                                        await cutscene(`[REDACTED] is very confused`);
+                                        await cutscene(`Unfortunately for you, [REDACTED] does not like Amoung Us.`);
+                                        await cutscene(`<p id="strong">YOU DIED: Amogus</p>`);
                                         await LBozo(player);
-                                        await cutscene(`You gained: -15 progress with [REDACTED].`);
-                                        await cutscene(`You gained: nickname 'Creepy Pervert'.`);
+                                        await cutscene(`You gained: -1 progress with [REDACTED].`);
+                                        await cutscene(`You gained: nickname 'Imposter'.`);
                                         player.progress -= 15;
-                                        player.nickname = 'Creepy Pervert';
+                                        player.nickname = 'Imposter';
                                         break;
                                     case 3:
                                         await cutscene(`${player.name}: I like you, will you go out with me?<br>[REDACTED]: Stop perving on me ${player.name}`);
+                                        await cutscene(`<p id="strong">YOU DIED: Rejected</p>`);
+                                        await LBozo(player);
                                         await cutscene(`You gained: -5 progress with [REDACTED].`);
                                         await cutscene(`You gained: nickname 'Mega Perv'.`);
                                         player.progress -= 5;
@@ -3646,6 +3649,7 @@ async function scene1(player) {
                                         case 3:
                                             await cutscene(`[REDACTED]: Apology accepted.`);
                                             await cutscene(`[REDACTED]: Now don't bother me again.`);
+                                            await cutscene(`<p id="strong">YOU DIED: No chance with [REDACTED]</p>`);
                                             player.progress = Math.min(0,player.progress);
                                             player.girlStatus = 'annoyed';
                                             return player;
@@ -3696,6 +3700,41 @@ async function scene1(player) {
                     case 2:
                         await cutscene(`You take a seat next to [REDACTED] and enchroaches on her personal space.`);
                         await cutscene(`[REDACTED] is visible uncomfortable.`);
+                        possibleActions = [
+                            'Hey girl, how are you today?',
+                            'AMOGUS!!!', 
+                            'Do you want some meth?',
+                            'Do you want to know my Spec average?',
+                        ];
+                        switch (await choice(`How do you say, ${player.name}?`, possibleActions, false, false, false)) {
+                            case 0:
+                                await cutscene(`${player.name}: Hey girl, how are you today?`);
+                                await cutscene(`Before you can do anything else, [a certain teacher who likes frogs] appears behind you and tells you off for sexual harrassment.`);
+                                await cutscene(`You gained: +1 infringement.`);
+                                player.infringments += 1;
+                                await cutscene(`<p id="strong">YOU DIED: Death by [a certain teacher who likes frogs]</p>`);
+                                await LBozo(player);
+                                break;
+                            case 1:
+                                await cutscene(`You screan 'AMOUNGUS' so loudly that half the school heard you. [REDACTED] is covering her ears in pain and wincing.`);
+                                await cutscene(`Unfortunately, a horde of year 7s arrive, all of them screaming 'amoungus'`);
+                                await cutscene(`<p id="strong">YOU DIED: Cringe</p>`);
+                                await LBozo(player);
+                                break;
+                            case 2:
+                                await cutscene(`${player.name}: do you want some meth?<br>You use your incredible chemistry skills to synthesize a mole of C10H15N and offer it to [REDACTED].`);
+                                await cutscene(`Unfortunately (or fortunately), [REDACTED] is a good citizen and does not like meth. [REDACTED] calls the police.`);
+                                await cutscene(`<p id="strong">YOU DIED: Arrested for methemphetamine posession</p>`);
+                                await LBozo(player);
+                                break;
+                            case 3:
+                                await cutscene(`${player.name}: do you want to know my spec average?<br>[REDACTED]: um... sure.<br>${player.name}: I got 95% in spec! I'm godly at maths.<br>[REDACTED]: you got 74% in the first test right?`);
+                                await cutscene(`<p id="strong">YOU DIED: EXPOSED!</p>`);
+                                await LBozo(player);
+                                break;
+                            default:
+                                break;
+                        }
                         break;
                     case 3:
                         await cutscene(`You stare at [REDACTED] from several meters away like a creep.`);
