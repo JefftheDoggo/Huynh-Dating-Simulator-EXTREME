@@ -3694,6 +3694,8 @@ async function scene1(player) {
                         }
                         break;
                     case 2:
+                        await cutscene(`You take a seat next to [REDACTED] and enchroaches on her personal space.`);
+                        await cutscene(`[REDACTED] is visible uncomfortable.`);
                         break;
                     case 3:
                         await cutscene(`You stare at [REDACTED] from several meters away like a creep.`);
@@ -3712,6 +3714,8 @@ async function scene1(player) {
             break;
         case 3:
             await cutscene(`The goons you hired to pass the letter made a mistake during the delivery process and the letter ended up in the hands of [a certain teacher who likes frogs]. You better start writing your will now since you don't have long to live.`);
+            await cutscene(`<p id="strong">YOU DIED: death by [a certain teacher who likes frogs]</p>`);
+            await LBozo(player);
             break;
         default:
             return 1;
@@ -3974,8 +3978,7 @@ async function bossBattle(player) {
 
 async function game(character) {
     console.log('game started!');
-    let score = 0;
-    score = await scene1(score);
+    await scene1(character);
 
 };
 
