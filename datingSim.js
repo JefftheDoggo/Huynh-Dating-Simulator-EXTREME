@@ -3532,6 +3532,27 @@ async function scene1(player) {
                 switch (await choice(`What do you do now, ${player.name}?`, possibleActions, false, false, false)) {
                     case 0:
                         await cutscene(`You contemplate how to introduce yourself to [REDACTED].`);
+                        possibleActions = [
+                            'jump down from the balcony',
+                            'jump her from behind', 
+                            '',
+                            '',
+                        ];
+                        switch (await choice(`How do you make your entrance, ${player.name}?`, possibleActions, false, false, false)) {
+                            case 0:
+                                await cutscene(`You climb up the [old building opposite the oval] building and yeet yourself off the balcony.`);
+                                await cutscene(`You accelerate at 9.8 ms^-2 towards the ground, slaming into the aluminium table and breaking several bones in your legs and spine.`);
+                                await cutscene(`[REDACTED] screams as her lunchbox is crushed by the 2000N/cm^2 of force you exerted upon in during your fall.`);
+                                break;
+                            case 1:
+                                break;
+                            case 2:
+                                break;
+                            case 3:
+                                break;
+                            default:
+                                break;
+                        }
                         break;
                     case 1:
                         possibleActions = [
