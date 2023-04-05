@@ -3307,10 +3307,6 @@ async function LBozo(player) {
     await cutscene(`You never had a chance with [REDACTED].`);
     await cutscene(`BTW: you don't actually have viruses on your computer, I was joking.`);
     await cutscene(`Reload the game now, there is nothing more to see. You will get nowhere by pressing continue.`);
-    await cutscene(`Reload the game now, there is nothing more to see. You will get nowhere by pressing continue.`);
-    await cutscene(`Reload the game now, there is nothing more to see. You will get nowhere by pressing continue.`);
-    await cutscene(`Reload the game now, there is nothing more to see. You will get nowhere by pressing continue.`);
-    await cutscene(`Reload the game now, there is nothing more to see. You will get nowhere by pressing continue.`);
     await cutscene(`There is nothing more to see. Stop clicking continue`);
     await cutscene(`Stop clicking continue`);
     await cutscene(`Stop`);
@@ -3318,6 +3314,7 @@ async function LBozo(player) {
     await cutscene(`STOP`);
     await cutscene(`S T O P !`);
     await cutscene(`STOP!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!`);
+    /*
     for (let i=0; i<=10; i++) {
         await cutscene(`Bet you wished you could skip cutscenes. Now you have to wait for this very long message to load. Surely you have better things to do with your life. THere is actually nothing more to see but if you don't believe me, you can keep clicking.`);
     }
@@ -3326,9 +3323,8 @@ async function LBozo(player) {
     for (let i=0; i<=20; i++) {
         await cutscene(`Bet you wished you could skip cutscenes. Now you have to wait for this very long message to load. Surely you have better things to do with your life. THere is actually nothing more to see but if you don't believe me, you can keep clicking.`);
     }
-    await cutscene(`How did you escape another forever loop! HAX!!!!!!!!!!!!`);
+    await cutscene(`How did you escape another forever loop! HAX!!!!!!!!!!!!`);*/
     await cutscene(`Fine, you can keep going`);
-
     return player;
 };
 
@@ -3535,20 +3531,81 @@ async function scene1(player) {
                         possibleActions = [
                             'jump down from the balcony',
                             'jump her from behind', 
-                            '',
-                            '',
+                            'greet them and sit opposite her',
+                            'pass her a love letter',
                         ];
                         switch (await choice(`How do you make your entrance, ${player.name}?`, possibleActions, false, false, false)) {
                             case 0:
                                 await cutscene(`You climb up the [old building opposite the oval] building and yeet yourself off the balcony.`);
                                 await cutscene(`You accelerate at 9.8 ms^-2 towards the ground, slaming into the aluminium table and breaking several bones in your legs and spine.`);
                                 await cutscene(`[REDACTED] screams as her lunchbox is crushed by the 2000N/cm^2 of force you exerted upon in during your fall.`);
+                                await cutscene(`<p id="strong">YOU DIED: Fall damage</p>`);
+                                await LBozo(player);
+                                await cutscene(`You gained: -10 progress with [REDACTED].`);
+                                await cutscene(`You gained: -$10000 (medical bills).`);
+                                player.progress -= 10;
+                                player.money -= 10000;
                                 break;
                             case 1:
+                                await cutscene(`You sneak up on [REDACTED] from behind.`);
+                                await cutscene(`You place your hands on her shoulders and shout BOO.`);
+                                await cutscene(`[REDACTED] shrieks girlishly and slaps you in the face.`);
+                                await cutscene(`Unfortunately for you, momentum is conserved in inelastic collisions and your face once again has a velocity with great magnitude in the direction of the ground.`);
+                                await cutscene(`Your face is introduced rather violently to the unforgiving concrete.`);
+                                await cutscene(`<p id="strong">YOU DIED: Fall damage</p>`);
+                                await LBozo(player);
+                                await cutscene(`You gained: -15 progress with [REDACTED].`);
+                                player.progress -= 15;
                                 break;
                             case 2:
+                                await cutscene(`You walk up to [REDACTED].`);
+                                possibleActions = [
+                                    `Hi I\'m ${player.name}`,
+                                    `Greeting mortal, I is embodyment of the pinacle of intelect named as ${player.name}.`, 
+                                    'Hey..... can I grab you by the p*ssy? ;)', 
+                                    'I like you, will you go out with me?',
+                                ];
+                                switch (await choice(`What do you say ${player.name}`, possibleActions, false, false, false)) {
+                                    case 0:
+                                        await cutscene(`${player.name}: Hi I\'m ${player.name}<br>[REDACTED]: Hi, ${player.name}, I'm [REDACTED].<br>${player.name}: Do you want to go out with me?<br>[REDACTED]: No`);
+                                        await cutscene(`<p id="strong">YOU DIED: rejected by [REDACTED]</p>`);
+                                        await LBozo(player);
+                                        break;
+                                    case 1:
+                                        await cutscene(`${player.name}: Greeting mortal, I is embodyment of the pinacle of intelect named as ${player.name}.<br>[REDACTED]: Shut up, nobody cares.`);
+                                        await cutscene(`<p id="strong">YOU DIED: rejected by [REDACTED]</p>`);
+                                        await LBozo(player);
+                                        break;
+                                    case 2:
+                                        await cutscene(`${player.name}: Hey..... can I grab you by the p*ssy? ;)`);
+                                        await cutscene(`Unfortunately for you, [a certain teacher who likes frogs] appears beind you at that moment.`);
+                                        await cutscene(`<p id="strong">YOU DIED: Death by [a certain teacher who likes frogs]</p>`);
+                                        await LBozo(player);
+                                        await cutscene(`You gained: -15 progress with [REDACTED].`);
+                                        await cutscene(`You gained: nickname 'Creepy Pervert'.`);
+                                        player.progress -= 15;
+                                        player.nickname = 'Creepy Pervert';
+                                        break;
+                                    case 3:
+                                        await cutscene(`${player.name}: I like you, will you go out with me?<br>[REDACTED]: Stop perving on me ${player.name}`);
+                                        await cutscene(`You gained: -5 progress with [REDACTED].`);
+                                        await cutscene(`You gained: nickname 'Mega Perv'.`);
+                                        player.progress -= 5;
+                                        player.nickname = 'Mega Perv';
+                                        break;
+                                    default:
+                                        break;
+                                }
                                 break;
                             case 3:
+                                await cutscene(`You hire some goons (random year 7s) to deliver the letter to [REDACTED] for $1.`);
+                                player.money -= 1;
+                                await cutscene(`Unfortunately for you, your letter did not use https encryption and its contents were leaked.`);
+                                await cutscene(`Now, everybody knows about your obsession with [REDACTED].`);
+                                await cutscene(`<p id="strong">YOU DIED: died of cringe</p>`);
+                                await LBozo(player);
+                                await cutscene(`You gained: -10 reputation.`);
+                                player.reputation -= 10;
                                 break;
                             default:
                                 break;
@@ -3566,27 +3623,9 @@ async function scene1(player) {
                                 await cutscene(`You frantically look around but there are no shadows to hide in.`);
                                 await cutscene(`[REDACTED] turns around and sees you.`);
                                 if (player.reputation > 10) {
-                                    possibleActions = [
-                                        '',
-                                        '', 
-                                        '',
-                                        '',
-                                    ];
-                                    switch (await choice(`[REDACTED]: OMG! Hi ${player.name}!<br> ${player.name}: _____`, possibleActions, false, false, false)) {
-                                        case 0:
-                                        case 1:
-                                            
-                                            break;
-                                        case 2:
-                                            
-                                            break;
-                                        case 3:
-                                            
-                                            
-                                        default:
-                                            break;
-                                    }
-                                    await LBozo(player)
+                                    await cutscene(`[REDACTED]: OMG! Hi ${player.name} I love you so much.`);
+                                    await cutscene(`You snap out of your delusions a moment later.`);
+                                    await cutscene(`<p id="strong">YOU DIED: Crippling depression</p>`);
                                 } else {
                                     possibleActions = [
                                         'It wasn\t me',
